@@ -14,7 +14,7 @@ def entropy(psi,A):
     A=list(A); B=[q for q in range(8) if q not in A]
     M=psi.reshape([2]*8).transpose(A+B).reshape(2**len(A),2**len(B))
     s=np.linalg.svd(M,compute_uv=False)**2; s=s[s>1e-14]; return float(-(s*np.log2(s)).sum())
-def test(G,h,J,label):
+def run_area_law_test(G,h,J,label):
     psi=ground(list(G.edges),h,J); rows=[]
     for k in range(1,5):
         for A in itertools.combinations(range(8),k):
