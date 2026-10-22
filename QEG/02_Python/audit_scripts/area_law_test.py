@@ -14,7 +14,24 @@ def entropy(psi,A):
     A=list(A); B=[q for q in range(8) if q not in A]
     M=psi.reshape([2]*8).transpose(A+B).reshape(2**len(A),2**len(B))
     s=np.linalg.svd(M,compute_uv=False)**2; s=s[s>1e-14]; return float(-(s*np.log2(s)).sum())
-def run_area_law_test(G,h,J,label):
+cube = nx.convert_node_labels_to_integers(nx.hypercube_graph(3))
+
+print(
+    "Entanglement entropy S(A) of all 162 subset cuts "
+    "(|A|<=4) vs boundary-edge count, "
+    "ground state of H=-hΣX-JΣZZ, J=1"
+)
+
+for h in (0.3, 0.8, 1.25):
+    run_area_law_test(cube, h, 1.0, "cube")
+
+    for s in (3, 5):
+        run_area_law_test(
+            nx.random_regular_graph(3, 8, seed=s),
+            h,
+            1.0,
+            f"random 3-reg (seed {s})"
+        )
     psi=ground(list(G.edges),h,J); rows=[]
     for k in range(1,5):
         for A in itertools.combinations(range(8),k):
