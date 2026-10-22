@@ -1,0 +1,23 @@
+How to run the RQCG Theory Tester
+=================================
+
+1. Make sure you have Python 3 with:
+   numpy, scipy, matplotlib, sympy
+
+2. From this folder run:
+   python3 RQCG_Tester.py
+
+3. Menu options:
+   1  – Central charge from entanglement
+   2  – Metric reconstruction from entanglement
+   3  – Entanglement first law
+   4  – Light-cone / operator spreading
+   5  – Symbolic Einstein equations
+   6  – Run ALL tests + summary
+   0  – Exit
+
+4. Plots are saved automatically in a subfolder
+   (or in ../04_Test_Results if you keep the package structure).
+
+The audit_scripts/ folder contains the original detailed
+verification codes used to build the theory.
