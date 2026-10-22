@@ -28,6 +28,10 @@ def run_area_law_test(G,h,J,label):
 cube=nx.convert_node_labels_to_integers(nx.hypercube_graph(3))
 print("Entanglement entropy S(A) of all 162 subset cuts (|A|<=4) vs boundary-edge count, ground state of H=-hΣX-JΣZZ, J=1")
 for h in (0.3,0.8,1.25):
-    test(cube,h,1.0,'cube')
-    for s in (3,5):
-        test(nx.random_regular_graph(3,8,seed=s),h,1.0,f'random 3-reg (seed {s})')
+  run_area_law_test(cube,h,1.0,'cube')
+run_area_law_test(
+    nx.random_regular_graph(3,8,seed=s),
+    h,
+    1.0,
+    f'random 3-reg (seed {s})'
+)
